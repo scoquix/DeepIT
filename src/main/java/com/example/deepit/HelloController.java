@@ -3,6 +3,9 @@ package com.example.deepit;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
+import java.util.Iterator;
+
 @RestController
 public class HelloController {
     private final GreetingRepository repository;
@@ -17,7 +20,13 @@ public class HelloController {
     }
 
     @GetMapping("/greeting")
-    Iterable<Greeting> greetings() {
+    Iterable<Greeting> findAll() {
         return repository.findAll();
+
+    }
+
+    @GetMapping("/{id}")
+    Iterable<Greeting> findAllById(long id){
+        return repository.findAllById(Collections.singleton(id));
     }
 }
