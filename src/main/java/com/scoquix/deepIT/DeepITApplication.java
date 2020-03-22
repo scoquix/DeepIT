@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringdataApplication {
+public class DeepITApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringdataApplication.class, args);
+        SpringApplication.run(DeepITApplication.class, args);
     }
 
 }
