@@ -15,9 +15,7 @@ public class UserController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String hello(){
-        return "Witaj w moim pierwszym REST API <br>"+
-                "Aby zobaczyc czy jestes w mojej bazie dopisz do adresu URL <br>"+
-                "/users";
+        return "Witaj w moim REST API";
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
