@@ -1,18 +1,24 @@
 package com.scoquix.deepIT.controller;
 
-import java.util.List;
-
+import com.scoquix.deepIT.model.User;
+import com.scoquix.deepIT.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import com.scoquix.deepIT.services.UserService;
-import com.scoquix.deepIT.model.User;
+import java.util.List;
 
 @RestController
 public class UserController {
     @Autowired
     UserService userService;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String hello(){
+        return "Witaj w moim pierwszym REST API \n" +
+                "Aby zobaczyc czy jestes w mojej bazie dopisz do adresu URL \n" +
+                "/users";
+    }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public @ResponseBody User getAllUsers(@PathVariable Long id){
