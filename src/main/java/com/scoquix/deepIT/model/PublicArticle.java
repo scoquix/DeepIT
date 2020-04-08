@@ -15,7 +15,7 @@ public class PublicArticle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "article_id")
-    private Integer articleId;
+    private Long articleId;
 
     @Column(name = "author_id")
     private Integer authorId;
