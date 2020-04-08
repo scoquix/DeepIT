@@ -3,6 +3,7 @@ package com.scoquix.deepIT.controller;
 import com.scoquix.deepIT.model.PublicArticle;
 import com.scoquix.deepIT.services.PublicArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -31,17 +32,19 @@ public class PublicArticleController {
     }
 
     @PostMapping
-    public PublicArticle addArticle(@RequestBody PublicArticle article){
-        return articles.save(article);
+    public HttpStatus addArticle(@RequestBody PublicArticle article){
+        return articles.save(article) ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
     }
 
     @PutMapping
-    public PublicArticle updateArticle(@RequestBody PublicArticle article){
-        return articles.save(article);
+    public HttpStatus updateArticle(@RequestBody PublicArticle article){
+        return articles.save(article) ? HttpStatus.ACCEPTED : HttpStatus.BAD_REQUEST;
     }
 
     @DeleteMapping
-    public void deleteArticle(@RequestParam Long index){
+    public HttpStatus deleteArticle(@RequestParam Long index)
+    {
         articles.deleteById(index);
+        return HttpStatus.NO_CONTENT;
     }
 }
