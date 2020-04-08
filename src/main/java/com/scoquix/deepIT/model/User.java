@@ -1,8 +1,11 @@
 package com.scoquix.deepIT.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Data
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
@@ -19,47 +22,22 @@ public class User implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
+//    @OneToMany( mappedBy = "user",
+//                targetEntity = Course.class,
+//                fetch = FetchType.LAZY,
+//                cascade = {
+//                        CascadeType.PERSIST,
+//                        CascadeType.MERGE,
+//                        CascadeType.DETACH,
+//                        CascadeType.REFRESH})
+//    private List<Course> courses = new ArrayList<>();
+
+//    @OneToMany( mappedBy = "user",
+//                cascade = {
+//                        CascadeType.PERSIST,
+//                        CascadeType.MERGE,
+//                        CascadeType.DETACH,
+//                        CascadeType.REFRESH})
+//    private List<Article> articles;
     public User() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", age=" + age +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
-    }
 }
