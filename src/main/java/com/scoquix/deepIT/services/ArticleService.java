@@ -17,7 +17,7 @@ public class ArticleService {
     public ArticleService(ArticlesRepository<Article> articlesRepository) {
         this.articlesRepository = articlesRepository;
     }
-    
+
     @Transactional
     public List<Article> getAllArticles() {
         return (List<Article>) articlesRepository.findAll();
