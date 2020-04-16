@@ -1,6 +1,6 @@
 package com.scoquix.deepIT.services;
 
-import com.scoquix.deepIT.model.PublicArticle;
+import com.scoquix.deepIT.entity.PublicArticle;
 import com.scoquix.deepIT.repository.PublicArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.scoquix.deepIT.model;
+package com.scoquix.deepIT.entity;
 
 
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
 package com.scoquix.deepIT.controller;
 
-import com.scoquix.deepIT.model.Course;
+import com.scoquix.deepIT.entity.Course;
 import com.scoquix.deepIT.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

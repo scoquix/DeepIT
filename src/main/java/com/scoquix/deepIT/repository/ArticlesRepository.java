@@ -1,6 +1,6 @@
 package com.scoquix.deepIT.repository;
 
-import com.scoquix.deepIT.model.Article;
+import com.scoquix.deepIT.entity.Article;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.scoquix.deepIT.controller;
 
-import com.scoquix.deepIT.model.Article;
+import com.scoquix.deepIT.entity.Article;
 import com.scoquix.deepIT.services.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -37,7 +37,7 @@ public class DataConfig {
         LocalContainerEntityManagerFactoryBean lfb = new LocalContainerEntityManagerFactoryBean();
         lfb.setDataSource(dataSource());
         lfb.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        lfb.setPackagesToScan("com.scoquix.deepIT.model");
+        lfb.setPackagesToScan("com.scoquix.deepIT.entity");
         lfb.setJpaProperties(hibernateProps());
         return lfb;
     }

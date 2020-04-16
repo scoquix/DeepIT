@@ -1,4 +1,4 @@
-package com.scoquix.deepIT.model;
+package com.scoquix.deepIT.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +23,7 @@ public class Article implements Serializable {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "article_title")
+    @Column(name = "title")
     private String title;
 
     @Column(name = "course_id")
@@ -32,13 +32,15 @@ public class Article implements Serializable {
     @Column(name = "date")
     private Date date;
 
-//    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-//    @JoinColumn(name = "id", referencedColumnName = "id",insertable = false,updatable = false)
-//    private User user;
-
-//    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-//    @JoinColumn(name = "id",referencedColumnName = "id",insertable = false,updatable = false)
-//    private Course course;
+    @ManyToOne(fetch = FetchType.LAZY,
+                targetEntity = Course.class,
+                cascade = {
+                CascadeType.DETACH,
+                CascadeType.MERGE,
+                CascadeType.PERSIST,
+                CascadeType.REFRESH })
+    @JoinColumn(name = "course_id",insertable = false, updatable = false)
+    private Course course;
 
     public Article() {}
 }

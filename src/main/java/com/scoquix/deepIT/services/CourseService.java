@@ -1,7 +1,9 @@
 package com.scoquix.deepIT.services;
 
-import com.scoquix.deepIT.model.Course;
+import com.scoquix.deepIT.entity.Course;
+import com.scoquix.deepIT.entity.Instructor;
 import com.scoquix.deepIT.repository.CourseRepository;
+import com.scoquix.deepIT.repository.InstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,8 +13,9 @@ import java.util.Optional;
 
 @Service
 public class CourseService {
-
     private CourseRepository<Course> courseRepository;
+    @Autowired
+    private InstructorRepository<Instructor> instructorRepository;
 
     @Autowired
     public CourseService(CourseRepository<Course> courseRepository) {
