@@ -1,5 +1,5 @@
 # deepIT
-Educational Project - Simple REST API (Spring, JPA, PostgreSQL)
+Educational Project - Simple REST API (Spring, Hibernate, JPA, PostgreSQL)
 
 API info: 
 
