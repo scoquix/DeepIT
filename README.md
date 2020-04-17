@@ -3,22 +3,23 @@ Educational Project - Simple REST API (Spring, Hibernate, JPA, PostgreSQL)
 
 API info: 
 
-  Articles Endpointy:
+  Articles Endpoints:
   
-    /api/articles/all   <- (GET) zwraca wszystkie artykuły
+    /api/articles/all   <- (GET) returns articles lists
     
-    /api/articles/1   <- (GET) zwraca pierwszy artykuł
+    /api/articles/1   <- (GET) returns first article
     
-    /api/articles/   <- (POST) dodaje artykuł, nalezy w request body przeslac JSON-a
+    /api/articles/   <- (POST) insert article, send as JSON
     
-    np. {
+    example:
+        {
           "author_id":"12",
-          "content":"12", 
-          "title":"12"
+          "content":"New article", 
+          "title":"New Title"
         }
         
-    /api/articles/ <- (PUT) aktualizuje artykuł, nalezy w request body przeslac JSON-a ( jak wyzej ale dodajac article_id)
+    /api/articles/ <- (PUT) update article, put JSON in request body ( like above but with one extra field article_id)
     
-    /api/articles?index=1 <- (DELETE) usuwa artykuł, o article_id = 1
+    /api/articles?index=1 <- (DELETE) delete article with article_id = 1
 
-    Zapytania POST, PUT i DELETE będą zwracać HttpStatus np. POST -> CREATED, PUT -> ACCEPTED, DELETE -> NO_CONTENT
+    Requests POST, PUT and DELETE return HttpStatus, example: POST -> CREATED, PUT -> ACCEPTED, DELETE -> NO_CONTENT
