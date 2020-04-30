@@ -20,11 +20,12 @@ public class PublicArticleController {
     }
 
     @GetMapping("/all")
+    @CrossOrigin
     public Iterable<PublicArticle> getAll(){
         return articles.findAll();
     }
 
-
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody
     Optional<PublicArticle> getById(@PathVariable Long id){
