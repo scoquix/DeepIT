@@ -2,6 +2,7 @@ package com.scoquix.deepIT.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,9 @@ public class Instructor implements Serializable {
 
     @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "`createdAt`")
+    private Timestamp createdAt;
 
 
     @OneToMany( fetch = FetchType.LAZY,

@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @AllArgsConstructor
 @Data
@@ -25,6 +26,9 @@ public class PublicArticle implements Serializable {
 
     @Column(name = "title")
     private String title;
+
+    @Column(name = "`createdAt`")
+    private Timestamp createdAt;
 
     public PublicArticle(){}
 }

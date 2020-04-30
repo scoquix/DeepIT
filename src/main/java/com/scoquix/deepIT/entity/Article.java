@@ -5,7 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @AllArgsConstructor
 @Data
@@ -29,8 +29,11 @@ public class Article implements Serializable {
     @Column(name = "course_id")
     private Integer courseId;
 
-    @Column(name = "date")
-    private Date date;
+    @Column(name = "`createdAt`")
+    private Timestamp createdAt;
+
+    @Column(name = "`updatedAt`")
+    private Timestamp updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY,
                 targetEntity = Course.class,

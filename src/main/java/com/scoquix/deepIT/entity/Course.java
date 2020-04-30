@@ -1,7 +1,7 @@
 package com.scoquix.deepIT.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +13,8 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long courseId;
 
-    @Column(name="date")
-    private Date date;
+    @Column(name = "`createdAt`")
+    private Timestamp createdAt;
 
     @Column(name = "title")
     private String title;
@@ -24,6 +24,7 @@ public class Course {
 
     @Column(name = "author_id")
     private Long authorId;
+
 
     @OneToMany( fetch = FetchType.LAZY,
             targetEntity = Article.class,
@@ -40,8 +41,8 @@ public class Course {
 
     public Course() {}
 
-    public Course(Date date, String title, String desc, Long authorId) {
-        this.date = date;
+    public Course(Timestamp date, String title, String desc, Long authorId) {
+        this.createdAt = date;
         this.title = title;
         this.desc = desc;
         this.authorId = authorId;
@@ -51,9 +52,11 @@ public class Course {
     public String toString() {
         return "Course{" +
                 "courseId=" + courseId +
-                ", date=" + date +
+                ", createdAt=" + createdAt +
                 ", title='" + title + '\'' +
+                ", desc='" + desc + '\'' +
                 ", authorId=" + authorId +
+                ", articles=" + articles +
                 '}';
     }
 
@@ -73,12 +76,12 @@ public class Course {
         this.courseId = courseId;
     }
 
-    public Date getDate() {
-        return date;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getTitle() {
