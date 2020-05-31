@@ -1,6 +1,5 @@
 package com.scoquix.deepIT.config;
 
-
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +21,6 @@ import java.util.Properties;
 @EnableJpaRepositories("com.scoquix.deepIT.repository")
 @PropertySource("classpath:database.properties")
 public class DataConfig {
-    private final String PROPERTY_DRIVER = "driver";
     private final String PROPERTY_URL = "url";
     private final String PROPERTY_USERNAME = "user";
     private final String PROPERTY_PASSWORD = "password";
@@ -48,6 +46,7 @@ public class DataConfig {
         ds.setUrl(environment.getProperty(PROPERTY_URL));
         ds.setUsername(environment.getProperty(PROPERTY_USERNAME));
         ds.setPassword(environment.getProperty(PROPERTY_PASSWORD));
+        String PROPERTY_DRIVER = "driver";
         ds.setDriverClassName(Objects.requireNonNull(environment.getProperty(PROPERTY_DRIVER)));
         return ds;
     }
