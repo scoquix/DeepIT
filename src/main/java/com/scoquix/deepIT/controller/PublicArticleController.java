@@ -24,7 +24,7 @@ public class PublicArticleController {
         return articles.findAll();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public @ResponseBody
     Optional<PublicArticle> getById(@PathVariable Long id){
         return articles.findById(id);

@@ -7,9 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/lesson")
+@RequestMapping("/api/lessons")
 public class ArticleController {
     private ArticleService articleService;
 
@@ -18,34 +19,34 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public @ResponseBody
-    Article getAllArticles(@PathVariable Long id){
-        return articleService.getById(id).isPresent() ? articleService.getById(id).get() : new Article();
+    Optional<Article> getArticleById(@PathVariable Long id) {
+        return articleService.getById(id);
     }
 
-    @RequestMapping(value = "title/{title}",method = RequestMethod.GET)
+    @GetMapping(value = "title/{title}")
     public List<Article> getArticlesByTitle(@PathVariable String title){
         return articleService.findByTitle(title);
     }
 
-    @RequestMapping(value = "/all",method = RequestMethod.GET)
+    @GetMapping(value = "/all")
     public List<Article> getAll(){
         return articleService.getAllArticles();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/{id}")
     public HttpStatus deleteArticle(@PathVariable Long id){
         articleService.deleteArticle(id);
         return HttpStatus.NO_CONTENT;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @PostMapping
     public HttpStatus insertArticle(@RequestBody Article article){
         return articleService.addArticle(article) ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    @PutMapping
     public HttpStatus updateArticle(@RequestBody Article article) {
         return articleService.updateArticle(article) ? HttpStatus.ACCEPTED : HttpStatus.BAD_REQUEST;
     }

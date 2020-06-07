@@ -28,7 +28,7 @@ public class CourseService {
     }
 
     @Transactional
-    public Course findByTitle(String title) {
+    public List<Course> findByTitle(String title) {
         return courseRepository.findByTitle(title);
     }
 

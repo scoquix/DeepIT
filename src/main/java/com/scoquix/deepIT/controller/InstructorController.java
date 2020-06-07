@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/instructors")
 public class InstructorController {
     @Autowired
     InstructorService instructorService;
@@ -18,34 +19,34 @@ public class InstructorController {
         return "Witaj w moim REST API <br> Aby sprawdzic czy jestes w bazie dopisz do adresu /users";
     }
 
-    @RequestMapping(value = "/instr/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public @ResponseBody
     Instructor getAllUsers(@PathVariable Long id){
         return instructorService.getById(id).isPresent() ? instructorService.getById(id).get() : new Instructor();
     }
 
-    @RequestMapping(value = "instrByName/{name}",method = RequestMethod.GET)
+    @GetMapping(value = "/name/{name}")
     public List<Instructor> getUsersByName(@PathVariable String name){
         return instructorService.findByName(name);
     }
 
-    @RequestMapping(value = "/instructors",method = RequestMethod.GET)
+    @GetMapping(value = "/all")
     public List<Instructor> getAll(){
         return instructorService.getAllUsers();
     }
 
-    @RequestMapping(value = "/instr/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/{id}")
     public HttpStatus deleteUser(@PathVariable Long id){
         instructorService.deleteUser(id);
         return HttpStatus.NO_CONTENT;
     }
 
-    @RequestMapping(value = "/instr", method = RequestMethod.POST)
+    @PostMapping
     public HttpStatus insertUser(@RequestBody Instructor instructor){
         return instructorService.addUser(instructor) ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
     }
 
-    @RequestMapping(value = "/instr", method = RequestMethod.PUT)
+    @PutMapping
     public HttpStatus updateUser(@RequestBody Instructor instructor) {
         return instructorService.updateUser(instructor) ? HttpStatus.ACCEPTED : HttpStatus.BAD_REQUEST;
     }
