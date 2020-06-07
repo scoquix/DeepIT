@@ -11,7 +11,7 @@ import java.util.Base64;
 import java.util.Date;
 
 @RestController
-public class LoginAPI {
+public class AuthenticationController {
     @PostMapping("/loginToken")
     public String get(@RequestBody User user) {
         // TODO: Sprawdz czy ten user jest w bazie danych !!!!
