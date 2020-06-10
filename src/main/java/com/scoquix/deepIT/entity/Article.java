@@ -35,7 +35,7 @@ public class Article implements Serializable {
     @Column(name = "`updatedAt`")
     private Timestamp updatedAt;
 
-    @ManyToOne(fetch = FetchType.LAZY,
+    @ManyToOne(fetch = FetchType.EAGER,
                 targetEntity = Course.class,
                 cascade = {
                 CascadeType.DETACH,

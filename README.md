@@ -28,5 +28,13 @@ This backend version of the Spring DeepIT application only provides a REST API. 
     ***
     In its default configuration, Deepit doesn't have authentication.
     Recently add Basic JWT Authorization.
+    Security provides role separaion for specific endpoints:
+    
+    USER -> basic operations
+    
+    TEACHER -> basic operations + managing his own course
+    
+    MANAGER -> basic operations + administration
+    
     Calling the url `/loginToken` (POST) you recieve a JWT Token to authorize yourself
-    Without it, you will be deny at all urls, except `/api/article/*`
+    Without it, you will be deny at all urls, except `/api/article/*`, `loginToken', '/register'

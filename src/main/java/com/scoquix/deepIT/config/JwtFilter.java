@@ -14,8 +14,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Set;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class JwtFilter extends BasicAuthenticationFilter {
     JwtFilter(AuthenticationManager authenticationManager) {
@@ -37,11 +37,15 @@ public class JwtFilter extends BasicAuthenticationFilter {
             try {
                 Jws<Claims> claims = Jwts.parser().setSigningKey("aaa".getBytes()).parseClaimsJws(header.replace("Bearer ", ""));
                 String username = claims.getBody().get("username").toString();
-                System.out.println(username);
-                String role = claims.getBody().get("role").toString();
-                System.out.println(role);
-                Set<SimpleGrantedAuthority> authority = Collections.singleton(new SimpleGrantedAuthority(role));
-                return new UsernamePasswordAuthenticationToken(username, null, authority);
+                List<String> roles = (List<String>) claims.getBody().get("roles");
+
+                logger.info(username + " " + roles);
+                //Set<SimpleGrantedAuthority> authority = Collections.singleton(new SimpleGrantedAuthority(role));
+                List<SimpleGrantedAuthority> authorities =
+                        roles.stream()
+                                .map(SimpleGrantedAuthority::new)
+                                .collect(Collectors.toList());
+                return new UsernamePasswordAuthenticationToken(username, null, authorities);
             } catch (Exception e) {
                 return null;
             }
