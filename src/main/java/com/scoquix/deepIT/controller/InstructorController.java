@@ -21,7 +21,7 @@ public class InstructorController {
 
     @GetMapping(value = "/{id}")
     public @ResponseBody
-    Instructor getAllUsers(@PathVariable Long id){
+    Instructor getUserById(@PathVariable Long id){
         return instructorService.getById(id).isPresent() ? instructorService.getById(id).get() : new Instructor();
     }
 

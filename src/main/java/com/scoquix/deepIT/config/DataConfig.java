@@ -1,8 +1,5 @@
 package com.scoquix.deepIT.config;
 
-import com.google.auth.oauth2.GoogleCredentials;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,10 +13,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Objects;
 import java.util.Properties;
 
@@ -29,8 +22,8 @@ import java.util.Properties;
 @PropertySource("classpath:database.properties")
 public class DataConfig {
     private final String PROPERTY_URL = "url";
-    private final String PROPERTY_USERNAME = "user";
-    private final String PROPERTY_PASSWORD = "password";
+    private final String PROPERTY_USERNAME = "db_user";
+    private final String PROPERTY_PASSWORD = "db_password";
     private final String PROPERTY_SHOW_SQL = "hibernate.show_sql";
     private final String PROPERTY_DIALECT = "hibernate.dialect";
 
@@ -50,6 +43,10 @@ public class DataConfig {
     @Bean
     DataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
+        System.out.println("URL: "+environment.getProperty(PROPERTY_URL));
+        System.out.println("USERNAME: "+environment.getProperty(PROPERTY_USERNAME));
+        System.out.println("PASSWORD: "+environment.getProperty(PROPERTY_PASSWORD));
+        System.out.println("DRIVER: "+environment.getProperty("driver"));
         ds.setUrl(environment.getProperty(PROPERTY_URL));
         ds.setUsername(environment.getProperty(PROPERTY_USERNAME));
         ds.setPassword(environment.getProperty(PROPERTY_PASSWORD));

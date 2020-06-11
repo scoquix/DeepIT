@@ -1,10 +1,8 @@
 package com.scoquix.deepIT.dto;
 
-import javax.persistence.Entity;
 import java.util.Arrays;
 import java.util.List;
 
-@Entity
 public class AuthUserDTO {
     private String username;
     private char[] password;
