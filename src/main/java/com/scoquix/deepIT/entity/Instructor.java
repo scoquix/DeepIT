@@ -45,6 +45,14 @@ public class Instructor implements Serializable {
     }
     public Instructor() {}
 
+    public Instructor(Long id, Integer age, String firstName, String lastName, Timestamp createdAt) {
+        this.id = id;
+        this.age = age;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.createdAt = createdAt;
+    }
+
     public Long getId() {
         return id;
     }

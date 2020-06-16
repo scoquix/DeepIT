@@ -14,11 +14,6 @@ public class InstructorController {
     @Autowired
     InstructorService instructorService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String hello(){
-        return "Witaj w moim REST API <br> Aby sprawdzic czy jestes w bazie dopisz do adresu /users";
-    }
-
     @GetMapping(value = "/{id}")
     public @ResponseBody
     Instructor getUserById(@PathVariable Long id){
